@@ -1,0 +1,209 @@
+
+USB CDC
+CPU:96000000Hz
+sysclk_get_peripheral_hz:96000000Hz
+sysclk_get_main_hz:192000000Hz
+_W 
+Susp _S 
+_W Wkup 
+EoR rst(0:80000043) ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 4 0 0) _O Zl 
+0: In ZlpE
+Addr4 ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 ff) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 301 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 301 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Stp sErr ctlInit (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 6 0 0) _O Zl 
+0: In ZlpE
+Addr6 ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 4 0 0) _O Zl 
+0: In ZlpE
+Addr4 ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 ff) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 109) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (9 0 1 0 0) ep_alloc(3:8000007b) ep_alloc(1:800000ae) ep_alloc(2:800000a6) _O Zl 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (22 21 0 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+
+
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (20 21 0 0 7) _O 
+0: Out 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (22 21 3 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+0: Stp (20 21 0 0 7) _O 
+0: Out 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+
+<a2:2>
+
+<a2:2>
+
+<a2:8>
+0: Stp (22 21 2 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+

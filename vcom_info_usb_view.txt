@@ -1,0 +1,103 @@
+Device Descriptor:
+bcdUSB:             0x0200
+bDeviceClass:         0x02
+bDeviceSubClass:      0x00
+bDeviceProtocol:      0x00
+bMaxPacketSize0:      0x40 (64)
+idVendor:           0x03EB (Atmel Corporation)
+idProduct:          0x2404
+bcdDevice:          0x0100
+iManufacturer:        0x01
+0x0409: "ATMEL ASF"
+iProduct:             0x02
+0x0409: "CDC Virtual Com"
+iSerialNumber:        0x00
+bNumConfigurations:   0x01
+
+ConnectionStatus: DeviceConnected
+Current Config Value: 0x01
+Device Bus Speed:     High
+Device Address:       0x01
+Open Pipes:              3
+
+Endpoint Descriptor:
+bEndpointAddress:     0x83  IN
+Transfer Type:   Interrupt
+wMaxPacketSize:     0x0040 (64)
+bInterval:            0x01
+
+Endpoint Descriptor:
+bEndpointAddress:     0x81  IN
+Transfer Type:        Bulk
+wMaxPacketSize:     0x0200 (512)
+bInterval:            0x00
+
+Endpoint Descriptor:
+bEndpointAddress:     0x02  OUT
+Transfer Type:        Bulk
+wMaxPacketSize:     0x0200 (512)
+bInterval:            0x00
+
+Configuration Descriptor:
+wTotalLength:       0x0043
+bNumInterfaces:       0x02
+bConfigurationValue:  0x01
+iConfiguration:       0x00
+bmAttributes:         0xC0 (Bus Powered Self Powered )
+MaxPower:             0x32 (100 Ma)
+
+Interface Descriptor:
+bInterfaceNumber:     0x00
+bAlternateSetting:    0x00
+bNumEndpoints:        0x01
+bInterfaceClass:      0x02
+bInterfaceSubClass:   0x02
+bInterfaceProtocol:   0x01
+iInterface:           0x00
+
+Unknown Descriptor:
+bDescriptorType:      0x24
+bLength:              0x05
+05 24 00 10 01 
+
+Unknown Descriptor:
+bDescriptorType:      0x24
+bLength:              0x04
+04 24 02 02 
+
+Unknown Descriptor:
+bDescriptorType:      0x24
+bLength:              0x05
+05 24 06 00 01 
+
+Unknown Descriptor:
+bDescriptorType:      0x24
+bLength:              0x05
+05 24 01 03 01 
+
+Endpoint Descriptor:
+bEndpointAddress:     0x83  IN
+Transfer Type:   Interrupt
+wMaxPacketSize:     0x0040 (64)
+bInterval:            0x01
+
+Interface Descriptor:
+bInterfaceNumber:     0x01
+bAlternateSetting:    0x00
+bNumEndpoints:        0x02
+bInterfaceClass:      0x0A
+bInterfaceSubClass:   0x00
+bInterfaceProtocol:   0x00
+iInterface:           0x00
+
+Endpoint Descriptor:
+bEndpointAddress:     0x81  IN
+Transfer Type:        Bulk
+wMaxPacketSize:     0x0200 (512)
+bInterval:            0x00
+
+Endpoint Descriptor:
+bEndpointAddress:     0x02  OUT
+Transfer Type:        Bulk
+wMaxPacketSize:     0x0200 (512)
+bInterval:            0x00

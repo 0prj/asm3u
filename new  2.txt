@@ -1,0 +1,254 @@
+USB枚举过程:
+第一来回:
+    1)检测到设备,主机总线复位(是SIE根据总线状态通知用户的一种复位).
+    2)主机发SETUP包(0地址0端点),主机数据包(请求设备描述符),设备握手包ACK.
+        设备产生端点0数据中断,端点0输入缓冲区准备好设备描述符.
+    3)数据过程,主机先发一个IN令牌包,设备发一个数据包,主机发ACK包
+        SIE产生端点0数据输入中断,表明主机已取走设备的数据,用户中断程序处理.
+    4)状态过程,主机发OUT包,主机发0字节状态数据包(表明收到设备描述符),设备回ACK.
+第二来回:
+    5)主机再次复位总线,进入地址设置控制传输阶段
+    6)主机SETUP包,主机数据包(请求设置地址),设备握手包ACK.
+    7)数据过程,本次没有数据传输
+    8)状态过程,主机发IN包,设备发0字节状态数据包(表明地址设置成功),主机发ACK包.
+第三来回:
+    9)主机采用新地址发起第一个控制传输
+    10)主机发SETUP包(新地址),主机数据包(请求设备描述符),设备握手ACK包
+    11)数据过程,主机先发一个IN令牌包,设备发一个数据包,主机发ACK包.
+        数据量大时,重复执行
+    12)状态过程,主机发OUT包,主机发0字节状态数据包,设备回ACK包
+    获取配置描述符,配置集合,字符串描述符,报告描述符的过程差不多.
+	
+	
+	
+USB CDC
+CPU:96000000Hz
+sysclk_get_peripheral_hz:96000000Hz
+sysclk_get_main_hz:192000000Hz
+
+第一来回:
+_W 
+Susp _S 
+_W Wkup 
+	1)检测到设备,主机总线复位(是SIE根据总线状态通知用户的一种复位).
+EoR rst(0:80000043) ctlInit 
+	2)主机发SETUP包(0地址0端点),主机数据包(请求设备描述符),设备握手包ACK.
+		设备产生端点0数据中断,端点0输入缓冲区准备好设备描述符.
+	3)数据过程,主机先发一个IN令牌包,设备发一个数据包,主机发ACK包
+		SIE产生端点0数据输入中断,表明主机已取走设备的数据,用户中断程序处理.
+
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+第二来回:
+    5)主机再次复位总线,进入地址设置控制传输阶段
+    6)主机SETUP包,主机数据包(请求设置地址),设备握手包ACK.
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 4 0 0) _O Zl 
+0: In ZlpE
+Addr4 ctlInit 
+    7)数据过程,本次没有数据传输
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+    8)状态过程,主机发IN包,设备发0字节状态数据包(表明地址设置成功),主机发ACK包.
+0: Stp (6 80 200 0 ff) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 301 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 301 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Stp sErr ctlInit (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 9) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 43) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 6 0 0) _O Zl 
+0: In ZlpE
+Addr6 ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (6 80 100 0 40) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+EoR rst(0:80000043) ctlInit 
+0: Stp (5 0 4 0 0) _O Zl 
+0: In ZlpE
+第三来回:
+    9)主机采用新地址发起第一个控制传输
+    10)主机发SETUP包(新地址),主机数据包(请求设备描述符),设备握手ACK包
+    11)数据过程,主机先发一个IN令牌包,设备发一个数据包,主机发ACK包.
+        数据量大时,重复执行
+    12)状态过程,主机发OUT包,主机发0字节状态数据包,设备回ACK包
+    获取配置描述符,配置集合,字符串描述符,报告描述符的过程差不多.
+
+
+Addr4 ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 ff) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 300 0 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 302 409 ff) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 100 0 12) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (6 80 200 0 109) _I 
+0: In 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (9 0 1 0 0) ep_alloc(3:8000007b) ep_alloc(1:800000ae) ep_alloc(2:800000a6) _O Zl 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (22 21 0 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+
+##OPEN
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (20 21 0 0 7) _O 
+0: Out 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+0: Stp (22 21 3 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+0: Stp (20 21 0 0 7) _O 
+0: Out 
+0: In ZlpE
+ctlInit 
+0: Stp (21 a1 0 0 7) _I 
+0: In _zO 
+0: Out EoStp
+ctlInit 
+##PC-SEND
+<a2:2>
+
+<a2:2>
+
+<a2:8>
+#CLOSE
+0: Stp (22 21 2 0 0) _O Zl 
+0: In ZlpE
+ctlInit 
+	

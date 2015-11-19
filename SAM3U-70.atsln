@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Atmel Studio Solution File, Format Version 11.00
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "DEVICE_EXAMPLE1", "DEVICE_EXAMPLE1\DEVICE_EXAMPLE1.cproj", "{5E52BF96-63F3-4809-8CCC-AB003EC54CFD}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "EXAMPLE_CDC_MSC1", "EXAMPLE_CDC_MSC1\EXAMPLE_CDC_MSC1.cproj", "{26138AB0-EE89-4D48-AB03-B2AAFC896020}"
+EndProject
+Project("{54F91283-7BC4-4236-8FF9-10F437C3AD48}") = "DEVICE_EXAMPLE2", "DEVICE_EXAMPLE2\DEVICE_EXAMPLE2.cproj", "{DCE6C7E3-EE26-4D79-826B-08594B9AD897}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|ARM = Debug|ARM
+		Release|ARM = Release|ARM
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5E52BF96-63F3-4809-8CCC-AB003EC54CFD}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5E52BF96-63F3-4809-8CCC-AB003EC54CFD}.Debug|ARM.Build.0 = Debug|ARM
+		{5E52BF96-63F3-4809-8CCC-AB003EC54CFD}.Release|ARM.ActiveCfg = Release|ARM
+		{5E52BF96-63F3-4809-8CCC-AB003EC54CFD}.Release|ARM.Build.0 = Release|ARM
+		{26138AB0-EE89-4D48-AB03-B2AAFC896020}.Debug|ARM.ActiveCfg = Debug|ARM
+		{26138AB0-EE89-4D48-AB03-B2AAFC896020}.Debug|ARM.Build.0 = Debug|ARM
+		{26138AB0-EE89-4D48-AB03-B2AAFC896020}.Release|ARM.ActiveCfg = Release|ARM
+		{26138AB0-EE89-4D48-AB03-B2AAFC896020}.Release|ARM.Build.0 = Release|ARM
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|ARM.ActiveCfg = Debug|ARM
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Debug|ARM.Build.0 = Debug|ARM
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|ARM.ActiveCfg = Release|ARM
+		{DCE6C7E3-EE26-4D79-826B-08594B9AD897}.Release|ARM.Build.0 = Release|ARM
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
