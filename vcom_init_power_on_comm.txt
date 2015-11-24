@@ -55,7 +55,10 @@ ctlInit
 0: In _zO 
 0: Out EoStp
 ctlInit 
+
 0: Stp (6 80 302 409 ff) _I <20:20 03 43 00 44 00 43 00 20 00 56 00 69 00 72 00 74 00 75 00 61 00 6C 00 20 00 43 00 6F 00 6D 00 >
+#define  USB_DEVICE_PRODUCT_NAME          "CDC Virtual Com"
+
 0: In _zO 
 0: Out EoStp
 ctlInit 
@@ -89,6 +92,8 @@ ctlInit
 0: Out EoStp
 ctlInit 
 0: Stp (6 80 301 409 ff) _I <14:14 03 41 00 54 00 4D 00 45 00 4C 00 20 00 41 00 53 00 46 00 >
+#define  USB_DEVICE_MANUFACTURE_NAME      "ATMEL ASF"
+
 0: In _zO 
 0: Out EoStp
 ctlInit 
