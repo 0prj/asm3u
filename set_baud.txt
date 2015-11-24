@@ -1,0 +1,45 @@
+Bus Hound 5.00 capture. Complements of www.perisoft.net
+
+  Device - Device ID (followed by the endpoint for USB devices)
+            (14) Communication Device Class ASF example (COM10)
+  Phase  - Phase Type
+            CTL   USB control transfer       
+            DI    Data in                    
+            DO    Data out                   
+  Data   - Hex dump of the data transferred
+  Descr  - Description of the phase
+  Cmd... - Position in the captured data
+
+
+Device  Phase  Data                                                                                                    Description       Cmd.Phase.Ofs(rep)
+------  -----  ------------------------------------------------------------------------------------------------------  ----------------  ------------------
+  14.0  CTL    a1 21 00 00  00 00 07 00                                                                                GET LINE CODING          1.1.0(4)     
+  14.0  DI     00 c2 01 00  00 00 08                                                                                   .......                  1.2.0        
+
+  14.0  CTL    21 20 00 00  00 00 07 00                                                                                SET LINE CODING          5.1.0        
+  14.0  DO     00 c2 01 00  00 00 08                                                                                   .......                  5.2.0        
+
+  14.0  CTL    a1 21 00 00  00 00 07 00                                                                                GET LINE CODING          6.1.0        
+  14.0  DI     00 c2 01 00  00 00 08                                                                                   .......                  6.2.0        
+
+  14.0  CTL    21 22 03 00  00 00 00 00                                                                                SET CTRL LINE ST         7.1.0        
+
+  14.0  CTL    21 20 00 00  00 00 07 00                                                                                SET LINE CODING          8.1.0        
+  14.0  DO     00 c2 01 00  00 00 08                                                                                   .......                  8.2.0        
+
+  14.0  CTL    a1 21 00 00  00 00 07 00                                                                                GET LINE CODING          9.1.0(5)     
+  14.0  DI     00 c2 01 00  00 00 08                                                                                   .......                  9.2.0      
+  
+  14.0  CTL    21 20 00 00  00 00 07 00                                                                                SET LINE CODING         14.1.0        
+  14.0  DO     80 25 00 00  00 00 08                                                                                   .%.....                 14.2.0        
+
+  14.0  CTL    a1 21 00 00  00 00 07 00                                                                                GET LINE CODING         15.1.0        
+  14.0  DI     80 25 00 00  00 00 08                                                                                   .%.....                 15.2.0        
+
+  14.0  CTL    21 22 03 00  00 00 00 00                                                                                SET CTRL LINE ST        16.1.0        
+
+  14.0  CTL    21 20 00 00  00 00 07 00                                                                                SET LINE CODING         17.1.0        
+  14.0  DO     80 25 00 00  00 00 08                                                                                   .%.....                 17.2.0        
+
+  14.0  CTL    a1 21 00 00  00 00 07 00                                                                                GET LINE CODING         18.1.0        
+  14.0  DI     80 25 00 00  00 00 08                                                                                   .%.....                 18.2.0        
