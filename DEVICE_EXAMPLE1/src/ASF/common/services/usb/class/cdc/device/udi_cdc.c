@@ -232,14 +232,14 @@ static volatile uint8_t udi_cdc_nb_comm_enabled = 0;
  * Two buffers for each sense are used to optimize the speed.
  */
 //@{
-
+#define RX_BUFF_NUM_MAX     8
 //! Status of CDC DATA interfaces
 static volatile uint8_t udi_cdc_nb_data_enabled = 0;
 static volatile bool udi_cdc_data_running = false;
 //! Buffer to receive data
-COMPILER_WORD_ALIGNED static uint8_t udi_cdc_rx_buf[UDI_CDC_PORT_NB][2][UDI_CDC_RX_BUFFERS];
+COMPILER_WORD_ALIGNED static uint8_t udi_cdc_rx_buf[UDI_CDC_PORT_NB][RX_BUFF_NUM_MAX+1][UDI_CDC_RX_BUFFERS];
 //! Data available in RX buffers
-static volatile uint16_t udi_cdc_rx_buf_nb[UDI_CDC_PORT_NB][2];
+static volatile uint16_t udi_cdc_rx_buf_nb[UDI_CDC_PORT_NB][RX_BUFF_NUM_MAX+1];
 //! Give the current RX buffer used (rx0 if 0, rx1 if 1)
 static volatile uint8_t udi_cdc_rx_buf_sel[UDI_CDC_PORT_NB];
 //! Read position in current RX buffer
@@ -347,6 +347,13 @@ bool udi_cdc_data_enable(void)
 	udi_cdc_rx_buf_sel[port] = 0;
 	udi_cdc_rx_buf_nb[port][0] = 0;
 	udi_cdc_rx_buf_nb[port][1] = 0;
+	udi_cdc_rx_buf_nb[port][2] = 0;
+	udi_cdc_rx_buf_nb[port][3] = 0;
+	udi_cdc_rx_buf_nb[port][4] = 0;
+	udi_cdc_rx_buf_nb[port][5] = 0;
+	udi_cdc_rx_buf_nb[port][6] = 0;
+	udi_cdc_rx_buf_nb[port][7] = 0;
+
 	udi_cdc_rx_pos[port] = 0;
 	if (!udi_cdc_rx_start(port)) {
 		return false;
@@ -602,7 +609,8 @@ static bool udi_cdc_rx_start(uint8_t port)
 
 	// Change current buffer
 	udi_cdc_rx_pos[port] = 0;
-	udi_cdc_rx_buf_sel[port] = (buf_sel_trans==0)?1:0;
+//	udi_cdc_rx_buf_sel[port] = (buf_sel_trans==0)?1:0;
+	udi_cdc_rx_buf_sel[port] = (buf_sel_trans==RX_BUFF_NUM_MAX)?0:buf_sel_trans+1; //@dawen
 
 	// Start transfer on RX
 	udi_cdc_rx_trans_ongoing[port] = true;
@@ -656,7 +664,9 @@ static void udi_cdc_data_received(udd_ep_status_t status, iram_size_t n, udd_ep_
 		// Abort reception
 		return;
 	}
-	buf_sel_trans = (udi_cdc_rx_buf_sel[port]==0)?1:0;
+//	buf_sel_trans = (udi_cdc_rx_buf_sel[port]==0)?1:0;
+	buf_sel_trans = (udi_cdc_rx_buf_sel[port]==RX_BUFF_NUM_MAX)?0:udi_cdc_rx_buf_sel[port]+1; //@dawen
+
 	if (!n) {
 		udd_ep_run( ep,
 				true,

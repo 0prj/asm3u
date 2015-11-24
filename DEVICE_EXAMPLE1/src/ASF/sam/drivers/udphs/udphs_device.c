@@ -78,8 +78,8 @@
 #define UDD_EP_USED(ep)      (USB_DEVICE_MAX_EP >= ep)
 
 // for debug text
-#define dbg_print printf
-//#define dbg_print(...)
+//#define dbg_print printf
+#define dbg_print(...)
 
 /**
  * \ingroup udd_group
@@ -534,6 +534,7 @@ ISR(UDD_USB_INT_FUN)
 
 	if (Is_udd_sof()) {		
 		//dbg_print("s");
+		//printf("s");
 		udd_ack_sof();
 		if (Is_udd_full_speed_mode()) {
 			udc_sof_notify();
@@ -546,6 +547,7 @@ ISR(UDD_USB_INT_FUN)
 
 	if (Is_udd_msof()) {
 		//dbg_print("m");
+		//printf("m");
 		udd_ack_msof();
 		udc_sof_notify();
 		goto udd_interrupt_sof_end;
@@ -1439,13 +1441,14 @@ static void udd_ctrl_in_sent(void)
 	}
 	// dbg_print("t%d ", nb_remain);
 	// Write quickly the IN data
-	
-	dbg_print("<%X:",nb_remain);
+//@dawen
+//	dbg_print("<i%X:",nb_remain);
 	for (i = 0; i < nb_remain; i++) {		
-		dbg_print("%02X ",*ptr_src);
+//		dbg_print("%02X ",*ptr_src);
 		*ptr_dest++ = *ptr_src++;
 	}	
-	dbg_print(">");
+//	dbg_print(">");
+
 	udd_ctrl_payload_buf_cnt += nb_remain;
 
 	// Validate and send the data available in the control endpoint buffer
@@ -1491,13 +1494,14 @@ static void udd_ctrl_out_received(void)
 	}
 	uint8_t *ptr_src = (uint8_t *) & udd_get_endpoint_fifo_access(0, 8);
 	uint8_t *ptr_dest = udd_g_ctrlreq.payload + udd_ctrl_payload_buf_cnt;
-	dbg_print("<%0X:",nb_data);
+//@dawen
+//	dbg_print("<o%X:",nb_data);
 	for (i = 0; i < nb_data; i++) {
-		dbg_print("%02X ",*ptr_src);
+//		dbg_print("%02X ",*ptr_src);
 		*ptr_dest++ = *ptr_src++;
 	}
 	udd_ctrl_payload_buf_cnt += nb_data;
-	dbg_print(">");
+//	dbg_print(">");
 
 	if ((USB_DEVICE_EP_CTRL_SIZE != nb_data)
 			|| (udd_g_ctrlreq.req.wLength <=
@@ -1839,7 +1843,8 @@ static bool udd_ep_interrupt(void)
 	udd_ep_job_t *ptr_job;
 
 	// For each endpoint different of control endpoint (0)
-	for (ep = 1; ep <= USB_DEVICE_MAX_EP; ep++) {
+	for (ep = 1; ep <= USB_DEVICE_MAX_EP; ep++) {		
+		dbg_print("<%x:i>", ep);
 		// Get job corresponding at endpoint
 		ptr_job = &udd_ep_job[ep - 1];
 
@@ -1851,7 +1856,8 @@ static bool udd_ep_interrupt(void)
 					& UDPHS_DMASTATUS_CHANN_ENB) {
 				return true; // Ignore EOT_STA interrupt
 			}
-			dbg_print("<a%d:", ep);
+			dbg_print("<%x:a", ep);			
+			//printf("A");
 			udd_disable_endpoint_dma_interrupt(ep);
 			// Save number of data no transfered
 			nb_remaining = (udd_endpoint_dma_get_status(ep) &
@@ -1870,6 +1876,7 @@ static bool udd_ep_interrupt(void)
 		}
 		// Check empty bank interrupt event
 		if (Is_udd_endpoint_interrupt_enabled(ep)) {
+			dbg_print("<%x:int>", ep);
 			if (Is_udd_tx_pkt_ready_interrupt_enabled(ep)
 					&& !Is_udd_tx_pkt_ready(ep)) {
 				udd_disable_tx_pkt_ready_interrupt(ep);
@@ -1881,6 +1888,7 @@ static bool udd_ep_interrupt(void)
 			if (Is_udd_bank_interrupt_enabled(ep)
 					&& (0 == udd_nb_busy_bank(ep))) {
 				// End of background transfer on IN endpoint
+				dbg_print("<%x:bank>", ep);
 				udd_disable_bank_interrupt(ep);
 				udd_disable_endpoint_interrupt(ep);
 

@@ -63,7 +63,7 @@
 #endif
 
 static sam_usart_opt_t usart_options;
-#define PRINTK_BUFFER_SIZE	(1024*8)
+#define PRINTK_BUFFER_SIZE	(1024*4)
 int printk_buffer_count = 0;
 int printk_buffer_in_index = 0; 
 int printk_buffer_out_index = 0;

@@ -83,7 +83,7 @@ static void configure_console(void)
 }
 
 char test_rx_buf[1024*16];
-int rx_block_len = 512;
+int rx_block_len = 512*2;
 int main(void)
 {
 	int rx_len;
